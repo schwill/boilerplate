@@ -1,0 +1,52 @@
+{
+  "name": "Boilerplate",
+  "authors": [
+    "Jeff Lupinski <iam@jefflupinski.com>",
+    "Seth Krasnianski <seth@sjkstudios.com>"
+  ],
+  "version": "0.0.1",
+  "description": "Client-side boilerplate. Made with gulp and friends.",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:schwill/boilerplate.git"
+  },
+  "scripts": {
+    "start": "gulp",
+    "build": "NODE_ENV=production gulp build",
+    "clean": "rm -rf public"
+  },
+  "devDependencies": {
+    "babel-core": "^5.8.25",
+    "babelify": "^6.2.0",
+    "browserify": "^11.0.1",
+    "envify": "^3.4.0",
+    "gulp": "^3.9.0",
+    "gulp-autoprefixer": "^2.3.1",
+    "gulp-cached": "^1.1.0",
+    "gulp-changed": "^1.2.1",
+    "gulp-concat": "~2.1.7",
+    "gulp-filter": "^2.0.2",
+    "gulp-flatten": "0.0.2",
+    "gulp-if": "0.0.5",
+    "gulp-jade": "^1.0.1",
+    "gulp-jade-inheritance": "^0.5.2",
+    "gulp-jade-template-concat": "git://github.com/dmi3y/gulp-jade-template-concat.git#3d2aeefc4c864c2f4560695f07d1a89a96d70436",
+    "gulp-load-plugins": "^1.0.0-rc.1",
+    "gulp-minify-css": "^1.1.6",
+    "gulp-notify": "^2.2.0",
+    "gulp-rename": "~1.1.0",
+    "gulp-sourcemaps": "^1.5.2",
+    "gulp-stylus": "^2.0.5",
+    "gulp-uglify": "^1.2.0",
+    "gulp-util": "~2.2.12",
+    "gulp-webserver": "^0.9.1",
+    "jade": "^1.11.0",
+    "node-env-file": "^0.1.7",
+    "rupture": "^0.6.1",
+    "vinyl-buffer": "^1.0.0",
+    "vinyl-source-stream": "^1.1.0"
+  },
+  "dependencies": {
+    "jquery": "^2.1.4"
+  }
+}
