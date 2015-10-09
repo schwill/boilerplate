@@ -2,7 +2,7 @@ Schwill - Boilerplate
 =======
 
 ## Installation
-- Install [node.js & npm](http://blog.npmjs.org/post/85484771375/how-to-install-npm)
+Install [node.js & npm](http://blog.npmjs.org/post/85484771375/how-to-install-npm)
 ```bash
 $ npm i -g bower
 $ npm i -g gulp
