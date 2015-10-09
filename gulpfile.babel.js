@@ -9,8 +9,17 @@ import buffer from 'vinyl-buffer';
 import config from './gulp-config.json';
 import env from 'node-env-file';
 import path from 'path';
+import chalk from 'chalk';
+import fs from 'fs';
 
-env(path.resolve(__dirname, '.env'));
+try {
+  fs.statSync('.env').isFile();
+  env(path.resolve(__dirname, '.env'));
+} catch (e) {
+  let warning = '\nMissing .env file. Create one before continuing.\n';
+  console.warn(chalk.yellow(warning));
+  process.exit(0);
+}
 
 const production = process.env.NODE_ENV === 'production';
 const $ = plugins();
