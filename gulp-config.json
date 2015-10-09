@@ -1,0 +1,48 @@
+{
+  "build": "public",
+  "port": "8008",
+  "jade": {
+    "views": {
+      "base": "views",
+      "src": "views/**/*.jade",
+      "open": "index.html"
+    },
+    "templates": {
+      "src": "views/templates/**/*.jade"
+    }
+  },
+  "scripts": {
+    "project": {
+      "src": "assets/scripts/main.js",
+      "watch": "assets/scripts/**/*.js",
+      "out": "main.js"
+    },
+    "vendor": {
+      "src": [
+        "bower_components/modernizr/modernizr.js",
+        "bower_components/jquery/dist/jquery.min.js"
+      ],
+      "out": "vendor.js"
+    },
+    "dest": "public/js"
+  },
+  "styles": {
+    "project": {
+      "src": "assets/styles/*.styl",
+      "watch": "assets/styles/**/*",
+      "dest": "public/css",
+      "out": "main.css",
+      "browsers": ["last 5 versions"]
+    },
+    "vendor": {
+      "src": [
+        "bower_components/normalize.styl/normalize.styl"
+      ],
+      "dest": "assets/styles/vendor"
+    }
+  },
+  "images": {
+    "src": "assets/images/**/*",
+    "dest": "public/images"
+  }
+}

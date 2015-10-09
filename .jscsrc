@@ -1,0 +1,6 @@
+{
+  "preset": "google",
+  "disallowSpacesInAnonymousFunctionExpression": null,
+  "requireCamelCaseOrUpperCaseIdentifiers": null,
+  "excludeFiles": ["node_modules/**"]
+}
