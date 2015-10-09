@@ -31,7 +31,7 @@
     "gulp-if": "0.0.5",
     "gulp-jade": "^1.0.1",
     "gulp-jade-inheritance": "^0.5.2",
-    "gulp-jade-template-concat": "git://github.com/dmi3y/gulp-jade-template-concat.git#3d2aeefc4c864c2f4560695f07d1a89a96d70436",
+    "gulp-jade-template-concat": "sethkrasnianski/gulp-jade-template-concat#v0.0.1",
     "gulp-load-plugins": "^1.0.0-rc.1",
     "gulp-minify-css": "^1.1.6",
     "gulp-notify": "^2.2.0",
