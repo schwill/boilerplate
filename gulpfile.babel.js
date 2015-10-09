@@ -14,6 +14,9 @@ env(path.resolve(__dirname, '.env'));
 
 const production = process.env.NODE_ENV === 'production';
 const $ = plugins();
+const locals = {
+  live: production
+};
 
 gulp.task('server', [
   'jade.views',
@@ -34,10 +37,6 @@ gulp.task('server', [
 });
 
 gulp.task('jade.views', () => {
-  let locals = {
-    url: process.env.url || `http://localhost:${config.port}`,
-    live: production,
-  };
 
   return gulp.src(config.jade.views.src)
     .pipe($.changed(config.build, {extension: '.html'}))
@@ -83,10 +82,7 @@ gulp.task('scripts.project', () => {
       debug: true
     })
     .transform(babelify)
-    .transform(envify({
-      'url': process.env.url || `http://localhost${config.port}`,
-      'live': production,
-    }))
+    .transform(envify(locals))
     .bundle()
     .on('error', (err) => {
       console.log('Error : ' + err.message);
