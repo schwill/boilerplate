@@ -1,5 +1,5 @@
 import $ from 'jquery';
-import {date, hello} from './utilites';
+import {date, hello} from './utilities';
 import surprise from './modules/surprise';
 
 hello('Schwill');
