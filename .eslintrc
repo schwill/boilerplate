@@ -1,0 +1,33 @@
+{
+  "parser": "babel-eslint",
+  "settings": {
+    "ecmascript": 6
+  },
+  "ecmaFeatures": {
+    "modules": true
+  },
+  "env": {
+    "browser": true,
+    "jquery": true,
+    "node": true,
+    "jest": true
+  },
+  "rules": {
+    "eqeqeq": 2,
+    "no-else-return": 2,
+    "camelcase": 2,
+    "comma-dangle": 2,
+    "no-multi-spaces": 2,
+    "no-unused-vars": 2,
+    "dot-notation": 2,
+    "no-shadow": 2,
+    "strict": 0
+  },
+  "globals": {
+    "require": false,
+    "gon": false,
+    "module": false,
+    "__dirname": false,
+    "analytics": false
+  }
+}

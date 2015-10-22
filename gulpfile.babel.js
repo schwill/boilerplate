@@ -151,6 +151,15 @@ gulp.task('clean', () => {
     .pipe($.rimraf());
 });
 
+gulp.task('lint', () => {
+  return gulp.src(config.scripts.project.lint)
+    .pipe($.eslint())
+    .pipe($.eslint.format())
+    .pipe($.eslint.failAfterError());
+});
+
+gulp.task('test', ['lint']);
+
 gulp.task('watch', () => {
   gulp.watch(config.jade.views.src, ['jade.views']);
   gulp.watch(config.jade.templates.src, ['jade.templates']);
