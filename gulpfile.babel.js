@@ -146,6 +146,11 @@ gulp.task('stylesheets.vendor', () => {
     .pipe(gulp.dest(config.styles.vendor.dest));
 });
 
+gulp.task('clean', () => {
+  return gulp.src(config.build, {read: false})
+    .pipe($.rimraf());
+});
+
 gulp.task('watch', () => {
   gulp.watch(config.jade.views.src, ['jade.views']);
   gulp.watch(config.jade.templates.src, ['jade.templates']);
