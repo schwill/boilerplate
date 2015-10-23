@@ -15,7 +15,8 @@
     "project": {
       "src": "assets/scripts/main.js",
       "watch": "assets/scripts/**/*.js",
-      "out": "main.js"
+      "out": "main.js",
+      "lint": "assets/scripts/**/*.js"
     },
     "vendor": {
       "src": [
