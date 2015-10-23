@@ -1,5 +1,6 @@
 Schwill - Boilerplate
 =======
+[![Build Status](https://travis-ci.org/schwill/boilerplate.svg?branch=master)](https://travis-ci.org/schwill/boilerplate)
 
 ## Installation
 Install [node.js & npm](http://blog.npmjs.org/post/85484771375/how-to-install-npm)
@@ -27,6 +28,6 @@ $ npm run clean
 ```
 
 ## Build public directory
-```bash 
+```bash
 $ npm run build
 ```
