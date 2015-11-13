@@ -16,9 +16,8 @@ try {
   fs.statSync('.env').isFile();
   env(path.resolve(__dirname, '.env'));
 } catch (e) {
-  let warning = '\nMissing .env file. Create one before continuing.\n';
+  let warning = '\nMissing .env file.\n';
   console.warn(chalk.yellow(warning));
-  process.exit(0);
 }
 
 const production = process.env.NODE_ENV === 'production';
