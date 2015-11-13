@@ -33,7 +33,7 @@ gulp.task('server', [
   'stylesheets.project',
   'scripts.project',
   'scripts.vendor',
-  'watch',
+  'watch'
 ], () => {
   gulp.src(config.build)
   .pipe($.webserver({
@@ -174,7 +174,7 @@ gulp.task('build', [
   'images',
   'stylesheets.project',
   'scripts.project',
-  'scripts.vendor',
+  'scripts.vendor'
 ], () => {
   process.exit(0);
 });
