@@ -151,7 +151,7 @@ gulp.task('clean', () => {
 });
 
 gulp.task('lint', () => {
-  return gulp.src(config.scripts.project.lint)
+  return gulp.src([config.scripts.project.lint, './gulpfile.babel.js'])
     .pipe($.eslint())
     .pipe($.eslint.format())
     .pipe($.eslint.failAfterError());
