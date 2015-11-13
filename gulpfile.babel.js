@@ -20,6 +20,7 @@ try {
   console.warn(chalk.yellow(warning));
 }
 
+const styleLintPath = [config.scripts.project.lint, './gulpfile.babel.js'];
 const production = process.env.NODE_ENV === 'production';
 const $ = plugins();
 const locals = {
@@ -151,13 +152,20 @@ gulp.task('clean', () => {
 });
 
 gulp.task('lint', () => {
-  return gulp.src([config.scripts.project.lint, './gulpfile.babel.js'])
+  return gulp.src(styleLintPath)
     .pipe($.eslint())
     .pipe($.eslint.format())
     .pipe($.eslint.failAfterError());
 });
 
-gulp.task('test', ['lint']);
+gulp.task('style', () => {
+  return gulp.src(styleLintPath)
+    .pipe($.jscs())
+    .pipe($.jscs.reporter())
+    .pipe($.jscs.reporter('fail'));
+});
+
+gulp.task('test', ['lint', 'style']);
 
 gulp.task('watch', () => {
   gulp.watch(config.jade.views.src, ['jade.views']);
