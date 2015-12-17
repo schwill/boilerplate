@@ -16,11 +16,11 @@ try {
   fs.statSync('.env').isFile();
   env(path.resolve(__dirname, '.env'));
 } catch (e) {
-  let warning = '\nMissing .env file. Create one before continuing.\n';
+  let warning = '\nMissing .env file.\n';
   console.warn(chalk.yellow(warning));
-  process.exit(0);
 }
 
+const styleLintPath = [config.scripts.project.lint, './gulpfile.babel.js'];
 const production = process.env.NODE_ENV === 'production';
 const $ = plugins();
 const locals = {
@@ -34,7 +34,7 @@ gulp.task('server', [
   'stylesheets.project',
   'scripts.project',
   'scripts.vendor',
-  'watch',
+  'watch'
 ], () => {
   gulp.src(config.build)
   .pipe($.webserver({
@@ -152,13 +152,20 @@ gulp.task('clean', () => {
 });
 
 gulp.task('lint', () => {
-  return gulp.src(config.scripts.project.lint)
+  return gulp.src(styleLintPath)
     .pipe($.eslint())
     .pipe($.eslint.format())
     .pipe($.eslint.failAfterError());
 });
 
-gulp.task('test', ['lint']);
+gulp.task('style', () => {
+  return gulp.src(styleLintPath)
+    .pipe($.jscs())
+    .pipe($.jscs.reporter())
+    .pipe($.jscs.reporter('fail'));
+});
+
+gulp.task('test', ['lint', 'style']);
 
 gulp.task('watch', () => {
   gulp.watch(config.jade.views.src, ['jade.views']);
@@ -175,7 +182,7 @@ gulp.task('build', [
   'images',
   'stylesheets.project',
   'scripts.project',
-  'scripts.vendor',
+  'scripts.vendor'
 ], () => {
   process.exit(0);
 });
