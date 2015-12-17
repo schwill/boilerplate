@@ -1,0 +1,48 @@
+$ieSprite = ".lt-ie9"
+$spriteMap = $icons.sprite
+
+sprite-attr($icon, $attr)
+  $newIcon = $icons[$icon]
+  if $newIcon == null
+    warn("Can't find an icon with the name ", $icon)
+  return $newIcon
+
+icon-attr($icon)
+  $attr = {
+    width: sprite-attr($icon.width),
+    height: sprite-attr($icon.height),
+    x: sprite-attr($icon.backgroundX),
+    y: sprite-attr($icon.backgroundY)
+  }
+  return $attr
+
+$sprite
+  background-image: url('' + $spriteMap.svgPath)
+  background-size: ($spriteMap.width) ($spriteMap.height)
+  display: inline-block
+
+$ie-sprite
+  background-image: url($spriteMap.pngPath)
+
+ie-sprite($icon, $type = all)
+  $iconMap = sprite-attr($icon, {})
+  if $ieSprite
+    {$ieSprite} &
+      if $type == all
+        @extend $ie-sprite
+      if $type == all or $type == size
+        width: $iconMap.width
+        height: $iconMap.height
+      if $type == all or $type == bg
+        background-position: ($iconMap.backgroundX) - 5 ($iconMap.backgroundY) - 5
+
+sprite($icon, $type = all)
+  if $type == all
+    @extend $sprite
+  $iconMap = sprite-attr($icon, {})
+  if $type == all or $type == size
+    height: (($iconMap.height) + 1)
+    width: (($iconMap.width) + 1)
+  if $type == all or $type == bg
+    background-position: (($iconMap.backgroundX) - 5) (($iconMap.backgroundY) - 5)
+  ie-sprite($icon, $type)

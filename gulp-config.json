@@ -45,5 +45,39 @@
   "images": {
     "src": "assets/images/**/*",
     "dest": "public/images"
+  },
+  "sprites": {
+    "svg": {
+      "src": "assets/images/sprites/**/*",
+      "dest": "./"
+    },
+    "png": {
+      "src": "public/images/sprites/svg/*.svg",
+      "dest": "public/images/sprites/png/"
+    },
+    "config": {
+      "shape": {
+        "spacing": {
+          "padding": 5
+        }
+      },
+      "mode": {
+        "css": {
+          "dest": "./",
+          "layout": "diagonal",
+          "sprite": "public/images/sprites/svg/sprite.svg",
+          "bust": false,
+          "render": {
+            "styl": {
+              "dest": "assets/styles/helpers/sprite.styl",
+              "template": "assets/styles/helpers/sprite-template.styl"
+            }
+          }
+        }
+      },
+      "variables": {
+        "mapname": "icons"
+      }
+    }
   }
 }
