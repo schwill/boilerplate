@@ -38,6 +38,7 @@ gulp.task('server', [
   'watch'
 ], () => {
   gulp.src(config.build)
+    .pipe($.plumber())
     .pipe($.webserver({
       fallback: 'index.html',
       livereload: true,
@@ -49,6 +50,7 @@ gulp.task('server', [
 gulp.task('jade.views', () => {
 
   return gulp.src(config.jade.views.src)
+    .pipe($.plumber())
     .pipe($.changed(config.build, {extension: '.html'}))
     .pipe($.if(global.isWatching, $.cached('jade')))
     .pipe($.jadeInheritance({basedir: config.jade.views.base}))
@@ -68,6 +70,7 @@ gulp.task('jade.views', () => {
 
 gulp.task('jade.templates', () => {
   return gulp.src(config.jade.templates.src)
+    .pipe($.plumber())
     .pipe($.jade({
       client: true
     }))
@@ -98,6 +101,7 @@ gulp.task('scripts.project', () => {
       console.log('Error : ' + err.message);
       this.emit('end');
     })
+    .pipe($.plumber())
     .pipe(source(config.scripts.project.out))
     .pipe(buffer())
     .pipe($.if(production, $.uglify()))
@@ -110,6 +114,7 @@ gulp.task('scripts.project', () => {
 
 gulp.task('scripts.vendor', () => {
   return gulp.src(config.scripts.vendor.src)
+    .pipe($.plumber())
     .pipe($.flatten())
     .pipe($.if(production, $.uglify()))
     .pipe($.concat(config.scripts.vendor.out))
@@ -122,6 +127,7 @@ gulp.task('scripts.vendor', () => {
 
 gulp.task('stylesheets.project', ['stylesheets.vendor'], () => {
   return gulp.src(config.styles.project.src)
+    .pipe($.plumber())
     .pipe($.stylus({
       use: [rupture()]
     }))
@@ -149,12 +155,14 @@ gulp.task('stylesheets.vendor', () => {
 
 gulp.task('svgSprites', () => {
   return gulp.src(config.sprites.svg.src)
+    .pipe($.plumber())
     .pipe($.svgSprite(config.sprites.config))
     .pipe(gulp.dest(config.sprites.svg.dest));
 });
 
 gulp.task('pngSprites', ['svgSprites'], () => {
   return gulp.src(config.sprites.png.src)
+    .pipe($.plumber())
     .pipe($.svg2png())
     .pipe(gulp.dest(config.sprites.png.dest));
 });
@@ -168,6 +176,7 @@ gulp.task('clean', () => {
 
 gulp.task('lint', () => {
   return gulp.src(styleLintPath)
+    .pipe($.plumber())
     .pipe($.eslint())
     .pipe($.eslint.format())
     .pipe($.eslint.failAfterError());
@@ -175,6 +184,7 @@ gulp.task('lint', () => {
 
 gulp.task('style', () => {
   return gulp.src(styleLintPath)
+    .pipe($.plumber())
     .pipe($.jscs())
     .pipe($.jscs.reporter())
     .pipe($.jscs.reporter('fail'));
