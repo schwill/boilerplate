@@ -38,12 +38,12 @@ gulp.task('server', [
   'watch'
 ], () => {
   gulp.src(config.build)
-  .pipe($.webserver({
-    fallback: 'index.html',
-    livereload: true,
-    open: true,
-    port: config.port
-  }));
+    .pipe($.webserver({
+      fallback: 'index.html',
+      livereload: true,
+      open: true,
+      port: config.port
+    }));
 });
 
 gulp.task('jade.views', () => {
