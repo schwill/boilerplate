@@ -97,7 +97,7 @@ gulp.task('scripts.project', () => {
     .transform(envify(locals))
     .bundle()
     .on('error', (err) => {
-      console.log('Error : ' + err.message);
+      $.util.log('Error:', err.message);
       this.emit('end');
     })
     .pipe($.plumber())
@@ -131,7 +131,7 @@ gulp.task('stylesheets.project', ['stylesheets.vendor'], () => {
       use: [rupture()]
     }))
     .on('error', (err) => {
-      console.log(err);
+      $.util.log('Error:', err.message);
       this.emit('end');
     })
     .pipe($.autoprefixer({
