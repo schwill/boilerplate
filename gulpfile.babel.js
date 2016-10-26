@@ -20,7 +20,7 @@ try {
   console.warn(chalk.yellow(warning));
 }
 
-const styleLintPath = [config.scripts.project.lint, './gulpfile.babel.js'];
+const styleLintPath = [config.scripts.project.lint, __filename.split(/[\\/]/).pop()];
 const production = process.env.NODE_ENV === 'production';
 const $ = plugins();
 const locals = {
