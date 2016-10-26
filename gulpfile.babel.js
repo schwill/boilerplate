@@ -74,7 +74,7 @@ gulp.task('jade.templates', () => {
       client: true
     }))
     .pipe($.jadeTemplateConcat('templates.js', {
-      templateVariable: 'templates'
+      templateVariable: config.templates.namespace || 'templates'
     }))
     .pipe(gulp.dest(config.scripts.dest))
     .pipe($.if(!production, $.notify({
