@@ -48,7 +48,6 @@ gulp.task('server', [
 });
 
 gulp.task('jade.views', () => {
-
   return gulp.src(config.jade.views.src)
     .pipe($.plumber())
     .pipe($.changed(config.build, {extension: '.html'}))
