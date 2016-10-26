@@ -20,7 +20,7 @@ try {
   console.warn(chalk.yellow(warning));
 }
 
-const styleLintPath = [config.scripts.project.lint, './gulpfile.babel.js'];
+const lintPath = [config.scripts.project.lint, __filename.split(/[\\/]/).pop()];
 const production = process.env.NODE_ENV === 'production';
 const $ = plugins();
 const locals = {
@@ -37,7 +37,7 @@ gulp.task('server', [
   'scripts.vendor',
   'watch'
 ], () => {
-  gulp.src(config.build)
+  return gulp.src(config.build)
     .pipe($.plumber())
     .pipe($.webserver({
       fallback: 'index.html',
@@ -48,7 +48,6 @@ gulp.task('server', [
 });
 
 gulp.task('jade.views', () => {
-
   return gulp.src(config.jade.views.src)
     .pipe($.plumber())
     .pipe($.changed(config.build, {extension: '.html'}))
@@ -75,7 +74,7 @@ gulp.task('jade.templates', () => {
       client: true
     }))
     .pipe($.jadeTemplateConcat('templates.js', {
-      templateVariable: 'templates'
+      templateVariable: config.templates.namespace || 'templates'
     }))
     .pipe(gulp.dest(config.scripts.dest))
     .pipe($.if(!production, $.notify({
@@ -175,7 +174,7 @@ gulp.task('clean', () => {
 });
 
 gulp.task('lint', () => {
-  return gulp.src(styleLintPath)
+  return gulp.src(lintPath)
     .pipe($.plumber())
     .pipe($.eslint())
     .pipe($.eslint.format())
@@ -183,7 +182,7 @@ gulp.task('lint', () => {
 });
 
 gulp.task('style', () => {
-  return gulp.src(styleLintPath)
+  return gulp.src(lintPath)
     .pipe($.plumber())
     .pipe($.jscs())
     .pipe($.jscs.reporter())
