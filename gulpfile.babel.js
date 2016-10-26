@@ -37,7 +37,7 @@ gulp.task('server', [
   'scripts.vendor',
   'watch'
 ], () => {
-  gulp.src(config.build)
+  return gulp.src(config.build)
     .pipe($.plumber())
     .pipe($.webserver({
       fallback: 'index.html',
